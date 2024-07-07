@@ -3,12 +3,12 @@
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 
-const VIDEO_URL = 'https://sssumaa.com/wallpaper'; // 動画URLを指定
+const VIDEO_URL = 'https://your-fastapi-server-url/wallpaper'; // FastAPIサーバーのURLを指定
 
 const Home = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const nextVideoRef = useRef<HTMLVideoElement>(null); // 次の動画用のリファレンスを追加
-  const [videoSrc, setVideoSrc] = useState<string>(VIDEO_URL);
+  const [videoSrc, setVideoSrc] = useState<string>("");
   const [nextVideoSrc, setNextVideoSrc] = useState<string | null>(null);
   const [isFetching, setIsFetching] = useState<boolean>(false);
 
@@ -56,7 +56,8 @@ const Home = () => {
     video.addEventListener('timeupdate', handleTimeUpdate);
     video.addEventListener('ended', handleEnded);
 
-    // Initial autoplay
+    // Initial autoplay and fetch the first video URL
+    fetchNextVideo();
     video.play().catch((error) => {
       console.error('Error attempting to play video:', error);
     });
@@ -69,6 +70,9 @@ const Home = () => {
 
   return (
     <div style={{ width: '100vw', height: '100vh', margin: 0 }}>
+      <header>
+        <h1>My Video Playback App</h1>
+      </header>
       <video ref={videoRef} src={videoSrc} autoPlay muted controls style={{ width: '100%', height: '100%' }} />
       <video ref={nextVideoRef} style={{ display: 'none' }} />
     </div>
