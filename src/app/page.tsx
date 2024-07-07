@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 
-const VIDEO_URL = 'https://your-fastapi-server-url/wallpaper'; // FastAPIサーバーのURLを指定
+const VIDEO_URL = 'https://sssumaa.com/wallpaper'; // FastAPIサーバーのURLを指定
 
 const Home = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
