@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 
-const VIDEO_URL = 'https://sssumaa.com/drive/download/wallpaper/ffv76cb.mp4?type=inline'; // 動画URLを指定
+const VIDEO_URL = 'https://sssumaa.com/wallpaper'; // 動画URLを指定
 
 const Home = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
